@@ -8,10 +8,9 @@ module Tableau
     end
 
     def all(params={})
-      # return { error: "site_id is missing." }.to_json if params[:site_id].nil? || params[:site_id].empty?
-      site_id = params[:site_id] || @client.site_id
+      site_id = @client.site_id
 
-      resp = @client.conn.get "/api/2.0/sites/#{site_id}/users" do |req|
+      resp = @client.conn.get "/api/2.0/sites/#{site_id}/users?pageSize=#{params["page-size"]}" do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
@@ -20,7 +19,7 @@ module Tableau
         data[:users] << {
           id: u['id'],
           name: u['name'],
-          site_id: params[:site_id],
+          site_id: site_id,
           role: u['role'],
           publish: u['publish'],
           content_admin: u['contentAdmin'],
@@ -28,19 +27,17 @@ module Tableau
           external_auth_user_id: u['externalAuthUserId']
         }
       end
-      data.to_json
+      data
     end
 
-    def find_by(user)
-      site_id = user[:site_id] || @client.site_id
+    def find_by(params={})
+      params.update({"page-size" => 1000})
 
-      return { error: "site_id is missing." }.to_json if site_id.nil?
-      return { error: "user_id is missing." }.to_json if user.nil? || user.empty?
+      #BUG: if you have more than 1000 users, you wont find your users
+      #needs pagination support
+      all_users = all(params)[:users]
 
-      resp = @client.conn.get "/api/2.0/sites/#{site_id}/users" do |req|
-        req.headers['X-Tableau-Auth'] = @client.token if @client.token
-      end
-      normalize_json(resp.body, site_id, user[:name])
+      return all_users.select {|u| u[:name] == params[:user_name] }.first
     end
 
     def create(user)

@@ -15,19 +15,9 @@ module Tableau
         s.css("project").each do |p|
           (@projects ||= []) << {id: p["id"], name: p["name"]}
         end
-        data[:sites] << {
-          name: s['name'],
-          id: s['id'],
-          content_url: s['contentUrl'],
-          admin_mode: s['adminMode'],
-          user_quota: s['userQuota'],
-          storage_quota: s['storageQuota'],
-          state: s['state'],
-          status_reason: s['statusReason'],
-          projects: @projects
-        }
+        data[:sites] << normalize_json(s)
       end
-      data.to_json
+      data
     end
 
     def find_by(params={})
@@ -44,7 +34,7 @@ module Tableau
         req.params["key"] = "contentUrl" if term == params[:url]
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
-      normalize_json(resp.body)
+      normalize_json(Nokogiri::XML(resp.body).css("site").first)
     end
 
     def create(site)
@@ -122,21 +112,17 @@ module Tableau
 
     private
 
-    def normalize_json(r)
-      data = {site: {}}
-      Nokogiri::XML(r).css("site").each do |s|
-        data[:site] = {
-          name: s['name'],
-          id: s['id'],
-          content_url: s['contentUrl'],
-          admin_mode: s['adminMode'],
-          user_quota: s['userQuota'],
-          storage_quota: s['storageQuota'],
-          state: s['state'],
-          status_reason: s['statusReason']
-        }
-      end
-      data.to_json
+    def normalize_json(s)
+      {
+        name: s['name'],
+        id: s['id'],
+        content_url: s['contentUrl'],
+        admin_mode: s['adminMode'],
+        user_quota: s['userQuota'],
+        storage_quota: s['storageQuota'],
+        state: s['state'],
+        status_reason: s['statusReason']
+      }
     end
   end
 end

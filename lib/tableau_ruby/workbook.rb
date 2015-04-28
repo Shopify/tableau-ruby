@@ -8,11 +8,11 @@ module Tableau
     end
 
     def all(params={})
-      return { error: "site_id is missing." }.to_json if params[:site_id].nil? || params[:site_id].empty?
-      return { error: "user_id is missing." }.to_json if params[:user_id].nil? || params[:user_id].empty?
+      return { error: "user_id is missing." } if params[:user_id].nil? || params[:user_id].empty?
 
-      resp = @client.conn.get "/api/2.0/sites/#{params[:site_id]}/users/#{params[:user_id]}/workbooks" do |req|
+      resp = @client.conn.get "/api/2.0/sites/#{@client.site_id}/users/#{params[:user_id]}/workbooks" do |req|
         req.params['getThumbnails'] = params[:include_images] if params[:include_images]
+        req.params['isOwner'] = params[:is_owner] || false
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
@@ -29,7 +29,7 @@ module Tableau
         workbook = {id: w["id"], name: w["name"]}
 
         if params[:include_images]
-          resp = @client.conn.get("/api/2.0/sites/#{params[:site_id]}/workbooks/#{w['id']}/previewImage") do |req|
+          resp = @client.conn.get("/api/2.0/sites/#{@client.site_id}/workbooks/#{w['id']}/previewImage") do |req|
             req.headers['X-Tableau-Auth'] = @client.token if @client.token
           end
           workbook[:image] = Base64.encode64(resp.body)
@@ -41,37 +41,37 @@ module Tableau
         end
 
         w.css("tag").each do |t|
-          workbook[:tags] << t['id']
+          (workbook[:tags] ||=[]) << t['id']
         end
 
         if params[:include_views]
-          workbook[:views] = include_views(site_id: params[:site_id], id: w['id'])
+          workbook[:views] = include_views(site_id: @client.site_id, id: w['id'])
         end
 
         data[:workbooks] << workbook
       end
-      data.to_json
+      data
     end
 
-    def find(workbook)
-      resp = @client.conn.get "/api/2.0/sites/#{workbook[:site_id]}/workbooks/#{workbook[:id]}" do |req|
-        req.params['previewImage'] = workbook[:preview_images] if workbook[:preview_images]
+    def find(params)
+      resp = @client.conn.get "/api/2.0/sites/#{params[:site_id]}/workbooks/#{params[:workbook_id]}" do |req|
+        req.params['previewImage'] = params[:preview_images] if params[:preview_images]
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
-      data = {workbook: {}}
+      data = {}
       Nokogiri::XML(resp.body).css("workbook").each do |w|
 
         wkbk = {id: w["id"], name: w["name"], description: w['description']}
 
-        if workbook[:include_views]
-          wkbk[:views] = include_views(site_id: workbook[:site_id], id: workbook[:id])
+        if params[:include_views]
+          wkbk[:views] = include_views(site_id: params[:site_id], id: params[:workbook_id])
         end
 
-        data[:workbook] = wkbk
+        data = wkbk
       end
 
-      data.to_json
+      data
     end
 
     # TODO: Refactor this is duplicate in all method. Also, there are many, many places that are begging to be DRYer.
