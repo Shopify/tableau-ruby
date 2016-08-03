@@ -60,4 +60,124 @@ http_interactions:
         </tsResponse>
     http_version:
   recorded_at: Wed, 02 Sep 2015 16:34:20 GMT
+- request:
+    method: get
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users?pageSize=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/xml
+      User-Agent:
+      - Faraday v0.9.1
+      X-Tableau-Auth:
+      - b76cf89c9c1e4616fc388d95601f3793
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 02 Sep 2015 16:34:20 GMT
+      Etag:
+      - '"94a28077161048d01872d4df369ff008-gzip"'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      P3p:
+      - CP="NON"
+      Pragma:
+      - no-cache
+      Server:
+      - Tableau
+      Vary:
+      - "*,Accept-Encoding"
+      X-Runtime:
+      - '0.062000'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '962'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <pagination pageNumber="1" pageSize="10" totalAvailable="15"/>
+          <users>
+            <user id="cf68994e-29c8-4f41-bf6c-398e3666131e" name="<%=ENV['TABLEAU_ADMIN_USER']%>" siteRole="ServerAdministrator" externalAuthUserId="" lastLogin="2015-09-02T16:34:20Z"/>
+          </users>
+        </tsResponse>
+    http_version:
+  recorded_at: Wed, 02 Sep 2015 16:34:20 GMT
+- request:
+    method: get
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users?pageNumber=2&pageSize=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/xml
+      User-Agent:
+      - Faraday v0.9.1
+      X-Tableau-Auth:
+      - b76cf89c9c1e4616fc388d95601f3793
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Content-Type:
+      - application/xml;charset=utf-8
+      Date:
+      - Wed, 02 Sep 2015 16:34:20 GMT
+      Etag:
+      - '"94a28077161048d01872d4df369ff008-gzip"'
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00 GMT
+      P3p:
+      - CP="NON"
+      Pragma:
+      - no-cache
+      Server:
+      - Tableau
+      Vary:
+      - "*,Accept-Encoding"
+      X-Runtime:
+      - '0.062000'
+      X-Ua-Compatible:
+      - IE=Edge,chrome=1
+      Content-Length:
+      - '962'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+          <pagination pageNumber="2" pageSize="10" totalAvailable="15"/>
+          <users>
+            <user id="cf68994e-29c8-4f41-bf6c-398e3666131e" name="<%=ENV['TABLEAU_ADMIN_USER']%>" siteRole="ServerAdministrator" externalAuthUserId="" lastLogin="2015-09-02T16:34:20Z"/>
+          </users>
+        </tsResponse>
+    http_version:
+  recorded_at: Wed, 02 Sep 2015 16:34:20 GMT
 recorded_with: VCR 2.9.3

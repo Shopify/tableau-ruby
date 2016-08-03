@@ -47,10 +47,13 @@ module Tableau
       return resp.status
     end
 
-    def all(params={})
+    def all(options={})
       site_id = @client.site_id
 
-      resp = @client.conn.get "/api/2.0/sites/#{site_id}/users?pageSize=#{params["page-size"]}" do |req|
+      params = {pageSize: options[:page_size] || ''}
+      params.merge!(pageNumber: options[:page_number]) if options[:page_number]
+
+      resp = @client.conn.get "/api/2.0/sites/#{site_id}/users", params do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
@@ -71,7 +74,7 @@ module Tableau
     end
 
     def find_by(params={})
-      params.update({"page-size" => 1000})
+      params.update({page_size: 1000})
 
       #BUG: if you have more than 1000 users, you wont find your users
       #needs pagination support
