@@ -101,6 +101,22 @@ end
 
 ```
 
+### Tests
+
+After bundling the tests can be run by calling `bundle exec rake test`.You must set the following environment variables for the tests to run successfully:
+
+``` bash
+TABLEAU_URL
+TABLEAU_ADMIN_USER
+TABLEAU_ADMIN_PASSWORD
+TABLEAU_DEFAULT_SITE
+```
+
+ex.
+``` bash
+TABLEAU_URL="http://tab" TABLEAU_ADMIN_USER="admin" TABLEAU_ADMIN_PASSWORD="password" TABLEAU_DEFAULT_SITE="default" b rake test
+```
+
 ## TODO
 * inherit site_id from client object to avoid having to pass site_id
 * consolidate parameter checking
