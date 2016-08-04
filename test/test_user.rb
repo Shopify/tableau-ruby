@@ -9,6 +9,22 @@ class TestUsers < TableauTest
     end
   end
 
+  def test_user_listing_with_page_size
+    VCR.use_cassette("tableau_user_list", :erb => true) do
+      all_users = @client.users.all(page_size: 10)
+      assert all_users[:users].is_a? Array
+      assert all_users[:users].size() > 0
+    end
+  end
+
+  def test_user_listing_with_page_size_and_page_number
+    VCR.use_cassette("tableau_user_list", :erb => true) do
+      all_users = @client.users.all(page_size: 10, page_number: 2)
+      assert all_users[:users].is_a? Array
+      assert all_users[:users].size() > 0
+    end
+  end
+
   def test_user_find_by_id
     VCR.use_cassette("tableau_user_find", :erb => true) do
       admin_user = @client.users.find_by(id: @admin_user[:id])
