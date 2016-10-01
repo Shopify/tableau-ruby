@@ -4,6 +4,7 @@ require 'securerandom'
 module Tableau
   class Workbook
     include Util::Permissions
+    include Util::Pagination
 
     def initialize(client)
       @client = client
@@ -71,11 +72,20 @@ BODY
         }
       end.first
     end
-
+    
     def all(params={})
       return { error: "user_id is missing." } if params[:user_id].nil? || params[:user_id].empty?
+      
+      paginate_over_all_records(:workbooks, params)
+    end
 
-      resp = @client.conn.get "/api/2.0/sites/#{@client.site_id}/users/#{params[:user_id]}/workbooks?pageSize=1000" do |req|
+    def get(options={})
+      return { error: "user_id is missing." } if options[:user_id].nil? || options[:user_id].empty?
+      
+      params = {pageSize: options[:page_size] || ''}
+      params.merge!(pageNumber: options[:page_number]) if options[:page_number]
+
+      resp = @client.conn.get "/api/2.0/sites/#{@client.site_id}/users/#{options[:user_id]}/workbooks", params do |req|
         req.params['getThumbnails'] = params[:include_images] if params[:include_images]
         req.params['isOwner'] = params[:is_owner] || false
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
@@ -93,7 +103,7 @@ BODY
       doc.css("workbook").each do |w|
         workbook = {id: w["id"], name: w["name"]}
 
-        if params[:include_images]
+        if options[:include_images]
           resp = @client.conn.get("/api/2.0/sites/#{@client.site_id}/workbooks/#{w['id']}/previewImage") do |req|
             req.headers['X-Tableau-Auth'] = @client.token if @client.token
           end
@@ -109,7 +119,7 @@ BODY
           (workbook[:tags] ||=[]) << t['id']
         end
 
-        if params[:include_views]
+        if options[:include_views]
           workbook[:views] = include_views(site_id: @client.site_id, id: w['id'])
         end
 

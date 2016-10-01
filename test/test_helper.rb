@@ -3,6 +3,7 @@ require 'pry'
 require 'tableau_ruby'
 require 'mocha/setup'
 require 'vcr'
+require 'byebug'
 
 VCR.configure do |config|
   config.cassette_library_dir = "test/vcr_cassettes"

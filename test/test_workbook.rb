@@ -5,7 +5,7 @@ class TestWorkbook < TableauTest
     VCR.use_cassette("tableau_workbook_list", :erb => true) do
       workbooks = @client.workbooks.all(user_id: @admin_user[:id])
       assert workbooks[:workbooks].count > 0
-      assert workbooks[:pagination].keys() == [:page_number, :page_size, :total_available]
+      assert workbooks.keys() == [:workbooks]
     end
   end
 
