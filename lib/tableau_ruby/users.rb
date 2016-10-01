@@ -47,7 +47,7 @@ module Tableau
       return resp.status
     end
 
-    def all(options={})
+    def get(options={})
       site_id = @client.site_id
 
       params = {pageSize: options[:page_size] || ''}
@@ -80,19 +80,24 @@ module Tableau
       end
       data
     end
+    
+    def all(options={})
+      page = 1
+      options.update({page_size: 1000, page_number: page})
+
+      response = get(options)
+      data = response
+      while data[:users].size < response[:pagination][:total_available].to_i
+        page += 1
+        response = get(options.update(page_number: page))
+        data[:users].concat(response[:users])
+      end
+      data.delete(:pagination)
+      data
+    end
 
     def find_by(params={})
-      page = 1
-      params.update({page_size: 1000, page_number: page})
-
-      response = all(params)
-      records = response[:users]
-      while records.size < response[:pagination][:total_available].to_i
-        page += 1
-        response = all(params.update(page_number: page))
-        records.concat(response[:users])
-      end
-
+      records = all()[:users]
       if params[:id]
         return records.select {|u| u[:id] == params[:id] }.first
       elsif params[:name]
