@@ -52,7 +52,7 @@ BODY
 
       multipart_body.gsub!("\n","\r\n")
 
-      resp = @client.conn.post("/api/2.0/sites/#{params[:site_id]}/workbooks") do |req|
+      resp = @client.conn.post("/api/2.2/sites/#{params[:site_id]}/workbooks") do |req|
         req.options.timeout = 300 # open/read timeout sould be high...if your workbook talks to datasources, the http request can time out before its done
         req.options.open_timeout = 300
         req.params["overwrite"] = true
@@ -74,12 +74,13 @@ BODY
 
     def all(params={})
       return { error: "user_id is missing." } if params[:user_id].nil? || params[:user_id].empty?
-
-      resp = @client.conn.get "/api/2.0/sites/#{@client.site_id}/users/#{params[:user_id]}/workbooks?pageSize=1000" do |req|
+      
+      resp = @client.conn.get "/api/2.2/sites/#{@client.site_id}/users/#{params[:user_id]}/workbooks?pageSize=1000" do |req|
         req.params['getThumbnails'] = params[:include_images] if params[:include_images]
         req.params['isOwner'] = params[:is_owner] || false
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
+      
 
       data = {workbooks: [], pagination: {}}
       doc = Nokogiri::XML(resp.body)
@@ -94,7 +95,7 @@ BODY
         workbook = {id: w["id"], name: w["name"]}
 
         if params[:include_images]
-          resp = @client.conn.get("/api/2.0/sites/#{@client.site_id}/workbooks/#{w['id']}/previewImage") do |req|
+          resp = @client.conn.get("/api/2.2/sites/#{@client.site_id}/workbooks/#{w['id']}/previewImage") do |req|
             req.headers['X-Tableau-Auth'] = @client.token if @client.token
           end
           workbook[:image] = Base64.encode64(resp.body)
@@ -119,7 +120,7 @@ BODY
     end
 
     def find(params)
-      resp = @client.conn.get "/api/2.0/sites/#{params[:site_id]}/workbooks/#{params[:workbook_id]}" do |req|
+      resp = @client.conn.get "/api/2.2/sites/#{params[:site_id]}/workbooks/#{params[:workbook_id]}" do |req|
         req.params['previewImage'] = params[:preview_images] if params[:preview_images]
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -141,7 +142,7 @@ BODY
 
     # TODO: Refactor this is duplicate in all method. Also, there are many, many places that are begging to be DRYer.
     def preview_image(workbook)
-      resp = @client.conn.get("/api/2.0/sites/#{params[:site_id]}/workbooks/#{workbook[:id]}/previewImage") do |req|
+      resp = @client.conn.get("/api/2.2/sites/#{params[:site_id]}/workbooks/#{workbook[:id]}/previewImage") do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
@@ -176,7 +177,7 @@ BODY
         end
       end
 
-      resp = @client.conn.put "/api/2.0/sites/#{site_id}/workbooks/#{params[:workbook_id]}/permissions" do |req|
+      resp = @client.conn.put "/api/2.2/sites/#{site_id}/workbooks/#{params[:workbook_id]}/permissions" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -210,7 +211,7 @@ BODY
         end
       end
 
-      resp = @client.conn.put "/api/2.0/sites/#{site_id}/workbooks/#{params[:workbook_id]}/permissions" do |req|
+      resp = @client.conn.put "/api/2.2/sites/#{site_id}/workbooks/#{params[:workbook_id]}/permissions" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -223,7 +224,7 @@ BODY
     private
 
     def include_views(params)
-      resp = @client.conn.get("/api/2.0/sites/#{params[:site_id]}/workbooks/#{params[:id]}/views") do |req|
+      resp = @client.conn.get("/api/2.2/sites/#{params[:site_id]}/workbooks/#{params[:id]}/views") do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 

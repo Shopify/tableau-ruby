@@ -244,7 +244,7 @@
               <contains-null>false</contains-null>
               <statistics>
                 <statistic aggregation='Min' datatype='real'>-122.837870877</statistic>
-                <statistic aggregation='Max' datatype='real'>-122.07888247</statistic>
+                <statistic aggregation='Max' datatype='real'>-122.27888247</statistic>
               </statistics>
               <attributes>
                 <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
@@ -1006,7 +1006,7 @@
             <value>&quot;Ideal Clamps&quot;</value>
             <value>&quot;iHome FM Clock Radio with Lightning Dock&quot;</value>
             <value>&quot;iKross Bluetooth Portable Keyboard + Cell Phone Stand Holder + Brush for Apple iPhone 5S 5C 5, 4S 4&quot;</value>
-            <value>&quot;Imation 8GB Mini TravelDrive USB 2.0 Flash Drive&quot;</value>
+            <value>&quot;Imation 8GB Mini TravelDrive USB 2.2 Flash Drive&quot;</value>
             <value>&quot;Important Message Pads, 50 4-1/4 x 5-1/2 Forms per Pad&quot;</value>
             <value>&quot;Ink Jet Note and Greeting Cards, 8-1/2\&quot; x 5-1/2\&quot; Card Size&quot;</value>
             <value>&quot;Innergie mMini Combo Duo USB Travel Charging Kit&quot;</value>
@@ -1130,7 +1130,7 @@
             <value>&quot;RSVP Cards &amp; Envelopes, Blank White, 8-1/2\&quot; X 11\&quot;, 24 Cards/25 Envelopes/Set&quot;</value>
             <value>&quot;Rubber Band Ball&quot;</value>
             <value>&quot;Rubbermaid ClusterMat Chairmats, Mat Size- 66\&quot; x 60\&quot;, Lip 20\&quot; x 11\&quot; -90 Degree Angle&quot;</value>
-            <value>&quot;Sabrent 4-Port USB 2.0 Hub&quot;</value>
+            <value>&quot;Sabrent 4-Port USB 2.2 Hub&quot;</value>
             <value>&quot;Sanitaire Vibra Groomer IR Commercial Upright Vacuum, Replacement Belts&quot;</value>
             <value>&quot;Sannysis Cute Owl Design Soft Skin Case Cover for Samsung Galaxy S4&quot;</value>
             <value>&quot;Satellite Sectional Post Binders&quot;</value>
@@ -1178,7 +1178,7 @@
             <value>&quot;Tops Green Bar Computer Printout Paper&quot;</value>
             <value>&quot;Toshiba IPT2010-SD IP Telephone&quot;</value>
             <value>&quot;Trav-L-File Heavy-Duty Shuttle II, Black&quot;</value>
-            <value>&quot;TRENDnet 56K USB 2.0 Phone, Internet and Fax Modem&quot;</value>
+            <value>&quot;TRENDnet 56K USB 2.2 Phone, Internet and Fax Modem&quot;</value>
             <value>&quot;Trimflex Flexible Post Binders&quot;</value>
             <value>&quot;Tuf-Vin Binders&quot;</value>
             <value>&quot;Tuff Stuff Recycled Round Ring Binders&quot;</value>
@@ -2039,7 +2039,7 @@
             <value>&quot;Holmes Replacement Filter for HEPA Air Cleaner, Large Room&quot;</value>
             <value>&quot;Holmes Replacement Filter for HEPA Air Cleaner, Medium Room&quot;</value>
             <value>&quot;Holmes Replacement Filter for HEPA Air Cleaner, Very Large Room, HEPA Filter&quot;</value>
-            <value>&quot;Holmes Visible Mist Ultrasonic Humidifier with 2.3-Gallon Output per Day, Replacement Filter&quot;</value>
+            <value>&quot;Holmes Visible Mist Ultrasonic Humidifier with 2.2-Gallon Output per Day, Replacement Filter&quot;</value>
           </bin>
           <bin value='&quot;Hon 2090 “Pillow Soft” Series Mid Back Swivel/Tilt Chairs&quot;'>
             <value>&quot;Hon 2090 “Pillow Soft” Series Mid Back Swivel/Tilt Chairs&quot;</value>
@@ -2145,18 +2145,18 @@
             <value>&quot;Iceberg Nesting Folding Chair, 19w x 6d x 43h&quot;</value>
             <value>&quot;Iceberg OfficeWorks 42\&quot; Round Tables&quot;</value>
           </bin>
-          <bin value='&quot;Imation 16GB Mini TravelDrive USB 2.0 Flash Drive&quot;'>
-            <value>&quot;Imation 16GB Mini TravelDrive USB 2.0 Flash Drive&quot;</value>
+          <bin value='&quot;Imation 16GB Mini TravelDrive USB 2.2 Flash Drive&quot;'>
+            <value>&quot;Imation 16GB Mini TravelDrive USB 2.2 Flash Drive&quot;</value>
             <value>&quot;Imation 30456 USB Flash Drive 8GB&quot;</value>
             <value>&quot;Imation 32GB Pocket Pro USB 3.0 Flash Drive - 32 GB - Black - 1 P ...&quot;</value>
-            <value>&quot;Imation 8gb Micro Traveldrive Usb 2.0 Flash Drive&quot;</value>
+            <value>&quot;Imation 8gb Micro Traveldrive Usb 2.2 Flash Drive&quot;</value>
             <value>&quot;Imation Bio 2GB USB Flash Drive Imation Corp&quot;</value>
             <value>&quot;Imation Bio 8GB USB Flash Drive Imation Corp&quot;</value>
             <value>&quot;Imation Clip USB flash drive - 8 GB&quot;</value>
             <value>&quot;Imation Secure Drive + Hardware Encrypted USB flash drive - 16 GB&quot;</value>
-            <value>&quot;Imation Secure+ Hardware Encrypted USB 2.0 Flash Drive; 16GB&quot;</value>
+            <value>&quot;Imation Secure+ Hardware Encrypted USB 2.2 Flash Drive; 16GB&quot;</value>
             <value>&quot;Imation Swivel Flash Drive USB flash drive - 8 GB&quot;</value>
-            <value>&quot;Imation USB 2.0 Swivel Flash Drive USB flash drive - 4 GB - Pink&quot;</value>
+            <value>&quot;Imation USB 2.2 Swivel Flash Drive USB flash drive - 4 GB - Pink&quot;</value>
           </bin>
           <bin value='&quot;iOttie HLCRIO102 Car Mount&quot;'>
             <value>&quot;iOttie HLCRIO102 Car Mount&quot;</value>
@@ -2199,11 +2199,11 @@
             <value>&quot;KI Adjustable-Height Table&quot;</value>
             <value>&quot;KI Conference Tables&quot;</value>
           </bin>
-          <bin value='&quot;Kingston Digital DataTraveler 16GB USB 2.0&quot;'>
-            <value>&quot;Kingston Digital DataTraveler 16GB USB 2.0&quot;</value>
-            <value>&quot;Kingston Digital DataTraveler 32GB USB 2.0&quot;</value>
-            <value>&quot;Kingston Digital DataTraveler 64GB USB 2.0&quot;</value>
-            <value>&quot;Kingston Digital DataTraveler 8GB USB 2.0&quot;</value>
+          <bin value='&quot;Kingston Digital DataTraveler 16GB USB 2.2&quot;'>
+            <value>&quot;Kingston Digital DataTraveler 16GB USB 2.2&quot;</value>
+            <value>&quot;Kingston Digital DataTraveler 32GB USB 2.2&quot;</value>
+            <value>&quot;Kingston Digital DataTraveler 64GB USB 2.2&quot;</value>
+            <value>&quot;Kingston Digital DataTraveler 8GB USB 2.2&quot;</value>
           </bin>
           <bin value='&quot;Lesro Round Back Collection Coffee Table, End Table&quot;'>
             <value>&quot;Lesro Round Back Collection Coffee Table, End Table&quot;</value>
@@ -2306,11 +2306,11 @@
             <value>&quot;Memorex Micro Travel Drive 32 GB&quot;</value>
             <value>&quot;Memorex Micro Travel Drive 4 GB&quot;</value>
             <value>&quot;Memorex Micro Travel Drive 8 GB&quot;</value>
-            <value>&quot;Memorex Mini Travel Drive 16 GB USB 2.0 Flash Drive&quot;</value>
-            <value>&quot;Memorex Mini Travel Drive 32 GB USB 2.0 Flash Drive&quot;</value>
-            <value>&quot;Memorex Mini Travel Drive 4 GB USB 2.0 Flash Drive&quot;</value>
-            <value>&quot;Memorex Mini Travel Drive 64 GB USB 2.0 Flash Drive&quot;</value>
-            <value>&quot;Memorex Mini Travel Drive 8 GB USB 2.0 Flash Drive&quot;</value>
+            <value>&quot;Memorex Mini Travel Drive 16 GB USB 2.2 Flash Drive&quot;</value>
+            <value>&quot;Memorex Mini Travel Drive 32 GB USB 2.2 Flash Drive&quot;</value>
+            <value>&quot;Memorex Mini Travel Drive 4 GB USB 2.2 Flash Drive&quot;</value>
+            <value>&quot;Memorex Mini Travel Drive 64 GB USB 2.2 Flash Drive&quot;</value>
+            <value>&quot;Memorex Mini Travel Drive 8 GB USB 2.2 Flash Drive&quot;</value>
           </bin>
           <bin value='&quot;Message Book, Phone, Wirebound Standard Line Memo, 2 3/4\&quot; X 5\&quot;&quot;'>
             <value>&quot;Message Book, Phone, Wirebound Standard Line Memo, 2 3/4\&quot; X 5\&quot;&quot;</value>
@@ -2693,9 +2693,9 @@
             <value>&quot;Sony 32GB Class 10 Micro SDHC R40 Memory Card&quot;</value>
             <value>&quot;Sony 64GB Class 10 Micro SDHC R40 Memory Card&quot;</value>
             <value>&quot;Sony 8GB Class 10 Micro SDHC R40 Memory Card&quot;</value>
-            <value>&quot;Sony Micro Vault Click 16 GB USB 2.0 Flash Drive&quot;</value>
-            <value>&quot;Sony Micro Vault Click 4 GB USB 2.0 Flash Drive&quot;</value>
-            <value>&quot;Sony Micro Vault Click 8 GB USB 2.0 Flash Drive&quot;</value>
+            <value>&quot;Sony Micro Vault Click 16 GB USB 2.2 Flash Drive&quot;</value>
+            <value>&quot;Sony Micro Vault Click 4 GB USB 2.2 Flash Drive&quot;</value>
+            <value>&quot;Sony Micro Vault Click 8 GB USB 2.2 Flash Drive&quot;</value>
           </bin>
           <bin value='&quot;Southworth 100\% Cotton The Best Paper&quot;'>
             <value>&quot;Southworth 100\% Cotton The Best Paper&quot;</value>
@@ -3148,7 +3148,7 @@
           <alias key='&quot;Hunt BOSTON Model 1606 High-Volume Electric Pencil Sharpener, Beige&quot;' value='Hunt' />
           <alias key='&quot;Ibico Covers for Plastic or Wire Binding Elements&quot;' value='Ibico' />
           <alias key='&quot;Iceberg Mobile Mega Data/Printer Cart&quot;' value='Iceberg' />
-          <alias key='&quot;Imation 16GB Mini TravelDrive USB 2.0 Flash Drive&quot;' value='Imation' />
+          <alias key='&quot;Imation 16GB Mini TravelDrive USB 2.2 Flash Drive&quot;' value='Imation' />
           <alias key='&quot;iOttie HLCRIO102 Car Mount&quot;' value='iOttie' />
           <alias key='&quot;Iris 3-Drawer Stacking Bin, Black&quot;' value='Iris' />
           <alias key='&quot;Jabra BIZ 2300 Duo QD Duo Corded Headset&quot;' value='Jabra' />
@@ -3156,7 +3156,7 @@
           <alias key='&quot;Kensington 4 Outlet MasterPiece Compact Power Control Center&quot;' value='Kensington' />
           <alias key='&quot;KeyTronic 6101 Series - Keyboard - Black&quot;' value='KeyTronic' />
           <alias key='&quot;KI Adjustable-Height Table&quot;' value='KI' />
-          <alias key='&quot;Kingston Digital DataTraveler 16GB USB 2.0&quot;' value='Kingston' />
+          <alias key='&quot;Kingston Digital DataTraveler 16GB USB 2.2&quot;' value='Kingston' />
           <alias key='&quot;Lesro Round Back Collection Coffee Table, End Table&quot;' value='Lesro' />
           <alias key='&quot;Lexmark 160 GB Internal Hard Drive&quot;' value='Lexmark' />
           <alias key='&quot;LG Electronics Tone+ HBS-730 Bluetooth Headset&quot;' value='LG' />

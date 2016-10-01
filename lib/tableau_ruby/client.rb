@@ -79,7 +79,7 @@ module Tableau
       end
 
       resp = @conn.post do |req|
-        req.url "/api/2.0/auth/signin"
+        req.url "/api/2.2/auth/signin"
         req.body = builder.to_xml
       end
 
@@ -91,7 +91,7 @@ module Tableau
     end
 
     def get_site_id
-      resp = @conn.get "/api/2.0/sites/#{@content_url}" do |req|
+      resp = @conn.get "/api/2.2/sites/#{@content_url}" do |req|
         req.params['key'] = 'contentUrl'
         req.headers['X-Tableau-Auth'] = @token if @token
       end

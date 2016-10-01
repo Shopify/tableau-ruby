@@ -55,7 +55,7 @@ BODY
 
       multipart_body.gsub!("\n","\r\n")
 
-      resp = @client.conn.post("/api/2.0/sites/#{params[:site_id]}/datasources") do |req|
+      resp = @client.conn.post("/api/2.2/sites/#{params[:site_id]}/datasources") do |req|
         req.params["overwrite"] = true
         req.headers["Content-Type"] = "multipart/mixed; boundary=\"boundary-string\""
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
@@ -75,7 +75,7 @@ BODY
     end
 
     def all(params={})
-      resp = @client.conn.get "/api/2.0/sites/#{@client.site_id}/datasources?pageSize=1000" do |req|
+      resp = @client.conn.get "/api/2.2/sites/#{@client.site_id}/datasources?pageSize=1000" do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
@@ -139,7 +139,7 @@ BODY
         end
       end
 
-      resp = @client.conn.put "/api/2.0/sites/#{site_id}/datasources/#{params[:datasource_id]}/permissions" do |req|
+      resp = @client.conn.put "/api/2.2/sites/#{site_id}/datasources/#{params[:datasource_id]}/permissions" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end

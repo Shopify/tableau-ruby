@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/6608f694-fc4e-42a3-a478-5178296dec5d
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/6608f694-fc4e-42a3-a478-5178296dec5d
     body:
       encoding: US-ASCII
       string: ''

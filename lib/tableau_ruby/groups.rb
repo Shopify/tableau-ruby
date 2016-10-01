@@ -5,7 +5,7 @@ module Tableau
     end
 
     def all
-      resp = @client.conn.get "/api/2.0/sites/#{@client.site_id}/groups" do |req|
+      resp = @client.conn.get "/api/2.2/sites/#{@client.site_id}/groups" do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
       groups = {groups: []}

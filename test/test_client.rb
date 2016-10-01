@@ -14,7 +14,7 @@ class TestClient < Minitest::Test
     Faraday::RackBuilder.any_instance.expects(:build_response).with do |*args|
       req = args[1]
       assert_equal req.method, :post
-      assert_equal req.path, "/api/2.0/auth/signin"
+      assert_equal req.path, "/api/2.2/auth/signin"
       assert_equal req.headers["Content-Type"], "application/xml"
       assert_equal req.body, "<?xml version=\"1.0\"?>\n<tsRequest>\n  <credentials name=\"bar\" password=\"waldo\">\n    <site contentUrl=\"foobar\"/>\n  </credentials>\n</tsRequest>\n"
     end.raises("dont care")

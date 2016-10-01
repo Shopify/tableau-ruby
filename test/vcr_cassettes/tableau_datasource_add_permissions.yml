@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/datasources/aadedf2b-bf2b-4ea8-8198-cc6ac0e79b21/permissions
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/datasources/aadedf2b-bf2b-4ea8-8198-cc6ac0e79b21/permissions
     body:
       encoding: UTF-8
       string: |
@@ -55,7 +55,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableausoftware.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api
-        http://tableausoftware.com/api/ts-api-2.0.xsd"><permissions><datasource id="aadedf2b-bf2b-4ea8-8198-cc6ac0e79b21"
+        http://tableausoftware.com/api/ts-api-2.2.xsd"><permissions><datasource id="aadedf2b-bf2b-4ea8-8198-cc6ac0e79b21"
         name="Kit_Test_Datasource"><owner id="cf68994e-29c8-4f41-bf6c-398e3348131e"
         /></datasource><granteeCapabilities><user id="0540525d-b635-4a1a-825e-acb6a1767175"
         /><capabilities><capability name="Connect" mode="Allow" /><capability name="Read"

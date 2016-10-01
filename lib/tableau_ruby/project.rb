@@ -7,7 +7,7 @@ module Tableau
     end
 
     def all
-      resp = @client.conn.get "/api/2.0/sites/#{@client.site_id}/projects" do |req|
+      resp = @client.conn.get "/api/2.2/sites/#{@client.site_id}/projects" do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
       projects = {projects: []}
@@ -36,7 +36,7 @@ module Tableau
         end
       end
 
-      resp = @client.conn.post "/api/2.0/sites/#{site_id}/projects" do |req|
+      resp = @client.conn.post "/api/2.2/sites/#{site_id}/projects" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -61,7 +61,7 @@ module Tableau
         end
       end
 
-      resp = @client.conn.put "/api/2.0/sites/#{project[:site_id]}/projects/#{project[:project_id]}" do |req|
+      resp = @client.conn.put "/api/2.2/sites/#{project[:site_id]}/projects/#{project[:project_id]}" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -78,7 +78,7 @@ module Tableau
 
       return { error: "project id is missing." } unless project[:id]
 
-      resp = @client.conn.delete "/api/2.0/sites/#{site_id}/projects/#{project[:id]}" do |req|
+      resp = @client.conn.delete "/api/2.2/sites/#{site_id}/projects/#{project[:id]}" do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
@@ -114,7 +114,7 @@ module Tableau
         end
       end
 
-      resp = @client.conn.put "/api/2.0/sites/#{site_id}/projects/#{params[:project_id]}/permissions" do |req|
+      resp = @client.conn.put "/api/2.2/sites/#{site_id}/projects/#{params[:project_id]}/permissions" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -148,7 +148,7 @@ module Tableau
         end
       end
 
-      resp = @client.conn.put "/api/2.0/sites/#{site_id}/projects/#{params[:project_id]}/permissions" do |req|
+      resp = @client.conn.put "/api/2.2/sites/#{site_id}/projects/#{params[:project_id]}/permissions" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end

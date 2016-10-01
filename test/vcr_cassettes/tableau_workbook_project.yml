@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects
     body:
       encoding: US-ASCII
       string: ''
@@ -52,7 +52,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <pagination pageNumber="1" pageSize="100" totalAvailable="7"/>
           <projects>
             <project id="972bcf8c-d7ce-11e3-ac00-0fa50cfedda9" name="default" description="The default project that was automatically created by Tableau."/>

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites?includeProjects
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites?includeProjects
     body:
       encoding: US-ASCII
       string: ''
@@ -52,7 +52,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <pagination pageNumber="1" pageSize="100" totalAvailable="5"/>
           <sites>
             <site id="<%=ENV['TABLEAU_DEFAULT_SITE']%>" name="Default" contentUrl="" adminMode="ContentAndUsers" state="Active"/>

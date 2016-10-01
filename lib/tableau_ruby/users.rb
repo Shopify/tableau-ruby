@@ -21,7 +21,7 @@ module Tableau
         end
       end
 
-      resp = @client.conn.post "/api/2.0/sites/#{site_id}/users" do |req|
+      resp = @client.conn.post "/api/2.2/sites/#{site_id}/users" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -38,7 +38,7 @@ module Tableau
 
       return { error: "user_id is missing." } unless options[:user_id]
 
-      resp = @client.conn.delete "/api/2.0/sites/#{site_id}/users/#{options[:user_id]}" do |req|
+      resp = @client.conn.delete "/api/2.2/sites/#{site_id}/users/#{options[:user_id]}" do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
@@ -53,7 +53,7 @@ module Tableau
       params = {pageSize: options[:page_size] || ''}
       params.merge!(pageNumber: options[:page_number]) if options[:page_number]
 
-      resp = @client.conn.get "/api/2.0/sites/#{site_id}/users", params do |req|
+      resp = @client.conn.get "/api/2.2/sites/#{site_id}/users", params do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 

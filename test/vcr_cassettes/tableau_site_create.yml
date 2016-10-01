@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites
     body:
       encoding: UTF-8
       string: |
@@ -35,7 +35,7 @@ http_interactions:
       Expires:
       - Thu, 01 Jan 1970 00:00:00 GMT
       Location:
-      - "/api/2.0/sites/6608f694-fc4e-42a3-a478-5178296dec5d"
+      - "/api/2.2/sites/6608f694-fc4e-42a3-a478-5178296dec5d"
       P3p:
       - CP="NON"
       Pragma:
@@ -56,7 +56,7 @@ http_interactions:
       encoding: UTF-8
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <site id="6608f694-fc4e-42a3-a478-5178296dec5d" name="API_TEST_SITE" contentUrl="nuclearwar44" adminMode="ContentAndUsers" disableSubscriptions="false" state="Active">
           </site>
         </tsResponse>

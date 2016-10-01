@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users
     body:
       encoding: UTF-8
       string: |
@@ -35,7 +35,7 @@ http_interactions:
       Expires:
       - Thu, 01 Jan 1970 00:00:00 GMT
       Location:
-      - "/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users/93796309-005f-480b-9b30-fbfb717b35bd"
+      - "/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users/93796309-005f-480b-9b30-fbfb717b35bd"
       P3p:
       - CP="NON"
       Pragma:
@@ -56,7 +56,7 @@ http_interactions:
       encoding: UTF-8
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <user id="93796309-005f-480b-9b30-fbfb717b35bd" name="captain_lulz" siteRole="Interactor" suppressGettingStarted="true"/>
         </tsResponse>
     http_version:

@@ -33,7 +33,7 @@ class TestWorkbook < TableauTest
     Faraday::RackBuilder.any_instance.expects(:build_response).with do |*args|
       req = args[1]
       assert_equal req.method, :post
-      assert_equal req.path, "/api/2.0/sites/#{@client.site_id}/workbooks"
+      assert_equal req.path, "/api/2.2/sites/#{@client.site_id}/workbooks"
       assert_equal req.headers["Content-Type"], "multipart/mixed; boundary=\"boundary-string\""
 
       uploaded_file = req.body

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects
     body:
       encoding: US-ASCII
       string: ''
@@ -52,7 +52,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <pagination pageNumber="1" pageSize="100" totalAvailable="7"/>
           <projects>
             <project id="972bcf8c-d7ce-11e3-ac00-0fa50cfedda9" name="default" description="The default project that was automatically created by Tableau."/>
@@ -65,7 +65,7 @@ http_interactions:
   recorded_at: Wed, 02 Sep 2015 16:34:24 GMT
 - request:
     method: post
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/datasources?overwrite=true
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/datasources?overwrite=true
     body:
       encoding: UTF-8
       string: "--boundary-string\r\nContent-Disposition: name=\"request_payload\"\r\nContent-Type:
@@ -257,7 +257,7 @@ http_interactions:
         \             <aggregation>Sum</aggregation>\r\n              <approx-count>7</approx-count>\r\n
         \             <contains-null>false</contains-null>\r\n              <statistics>\r\n
         \               <statistic aggregation='Min' datatype='real'>-122.837870877</statistic>\r\n
-        \               <statistic aggregation='Max' datatype='real'>-122.07888247</statistic>\r\n
+        \               <statistic aggregation='Max' datatype='real'>-122.27888247</statistic>\r\n
         \             </statistics>\r\n              <attributes>\r\n                <attribute
         datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>\r\n
         \               <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>\r\n
@@ -423,7 +423,7 @@ http_interactions:
       encoding: UTF-8
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <datasource id="369d8420-bf64-4771-a2a2-17d80f25b5ba" name="TestDatasource" type="excel">
             <project id="dfcab774-fc18-45ce-b534-05587c283801" name="foobartest"/>
             <owner id="cf68994e-29c8-4f41-bf6c-398e3666131e"/>

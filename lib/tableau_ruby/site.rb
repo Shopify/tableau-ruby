@@ -6,7 +6,7 @@ module Tableau
     end
 
     def all(params={})
-      resp = @client.conn.get "/api/2.0/sites" do |req|
+      resp = @client.conn.get "/api/2.2/sites" do |req|
         req.params['includeProjects'] = params[:include_projects]
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -28,7 +28,7 @@ module Tableau
       end
       key = params.keys - [:include_projects]
       term = params[key[0]]
-      resp = @client.conn.get "/api/2.0/sites/#{term}" do |req|
+      resp = @client.conn.get "/api/2.2/sites/#{term}" do |req|
         req.params['includeProjects'] = params[:include_projects] || false
         req.params["key"] = "name" if term == params[:name]
         req.params["key"] = "contentUrl" if term == params[:url]
@@ -50,7 +50,7 @@ module Tableau
         end
       end
 
-      resp = @client.conn.post "/api/2.0/sites" do |req|
+      resp = @client.conn.post "/api/2.2/sites" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -84,7 +84,7 @@ module Tableau
         end
       end
 
-      resp = @client.conn.put "/api/2.0/sites/#{site[:id]}" do |req|
+      resp = @client.conn.put "/api/2.2/sites/#{site[:id]}" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
@@ -95,7 +95,7 @@ module Tableau
     def delete(site)
       return { error: "site id is missing." } unless site[:id]
 
-      resp = @client.conn.delete "/api/2.0/sites/#{site[:id]}" do |req|
+      resp = @client.conn.delete "/api/2.2/sites/#{site[:id]}" do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 

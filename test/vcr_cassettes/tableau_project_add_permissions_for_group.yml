@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/groups
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/groups
     body:
       encoding: US-ASCII
       string: ''
@@ -54,7 +54,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <pagination pageNumber="1" pageSize="100" totalAvailable="4"/>
           <groups>
             <group id="97b96d2e-d7ce-11e3-b3a9-07e2874bf6a7" name="All Users">
@@ -75,7 +75,7 @@ http_interactions:
   recorded_at: Mon, 05 Oct 2015 17:48:48 GMT
 - request:
     method: put
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects/dfcab774-fc18-45ce-b534-05587c283801/permissions
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects/dfcab774-fc18-45ce-b534-05587c283801/permissions
     body:
       encoding: UTF-8
       string: |
@@ -133,7 +133,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableausoftware.com/api"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api
-        http://tableausoftware.com/api/ts-api-2.0.xsd"><permissions><project id="dfcab774-fc18-45ce-b534-05587c283801"
+        http://tableausoftware.com/api/ts-api-2.2.xsd"><permissions><project id="dfcab774-fc18-45ce-b534-05587c283801"
         name="foobartest"><owner id="cf68994e-29c8-4f41-bf6c-398e3348131e" /></project><granteeCapabilities><group
         id="97b96d2e-d7ce-11e3-b3a9-07e2874bf6a7" /><capabilities><capability name="ViewComments"
         mode="Allow" /><capability name="Connect" mode="Allow" /><capability name="Read"

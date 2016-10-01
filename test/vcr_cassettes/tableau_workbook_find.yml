@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users/cf68994e-29c8-4f41-bf6c-398e3666131e/workbooks?isOwner=false&pageSize=1000
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users/cf68994e-29c8-4f41-bf6c-398e3666131e/workbooks?isOwner=false&pageSize=1000
     body:
       encoding: US-ASCII
       string: ''
@@ -52,7 +52,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <pagination pageNumber="1" pageSize="1000" totalAvailable="21"/>
           <workbooks>
             <workbook id="4d7e46a3-eaa0-4e61-b949-7b3422c835ee" name="Tableau Tests" contentUrl="TableauTests">
@@ -79,7 +79,7 @@ http_interactions:
   recorded_at: Wed, 02 Sep 2015 16:34:23 GMT
 - request:
     method: get
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/workbooks/4d7e46a3-eaa0-4e61-b949-7b3422c835ee
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/workbooks/4d7e46a3-eaa0-4e61-b949-7b3422c835ee
     body:
       encoding: US-ASCII
       string: ''
@@ -129,7 +129,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <workbook id="4d7e46a3-eaa0-4e61-b949-7b3422c835ee" name="Tableau Tests" contentUrl="TableauTests">
             <project id="972bcf8c-d7ce-11e3-ac00-0fa50cfedda9" name="default"/>
             <owner id="d6a682bc-7af7-47ff-b33c-3b4b2c0e1987"/>

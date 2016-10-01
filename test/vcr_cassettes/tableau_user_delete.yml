@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users/93796309-005f-480b-9b30-fbfb717b35bd
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users/93796309-005f-480b-9b30-fbfb717b35bd
     body:
       encoding: US-ASCII
       string: ''

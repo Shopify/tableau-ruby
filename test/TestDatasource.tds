@@ -234,7 +234,7 @@
               <contains-null>false</contains-null>
               <statistics>
                 <statistic aggregation='Min' datatype='real'>-122.837870877</statistic>
-                <statistic aggregation='Max' datatype='real'>-122.07888247</statistic>
+                <statistic aggregation='Max' datatype='real'>-122.27888247</statistic>
               </statistics>
               <attributes>
                 <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>

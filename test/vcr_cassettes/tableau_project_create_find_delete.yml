@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects
     body:
       encoding: UTF-8
       string: |
@@ -35,7 +35,7 @@ http_interactions:
       Expires:
       - Thu, 01 Jan 1970 00:00:00 GMT
       Location:
-      - "/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects/8d4c5f24-40cb-4565-a866-601eeed86370"
+      - "/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects/8d4c5f24-40cb-4565-a866-601eeed86370"
       P3p:
       - CP="NON"
       Pragma:
@@ -56,14 +56,14 @@ http_interactions:
       encoding: UTF-8
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <project id="8d4c5f24-40cb-4565-a866-601eeed86370" name="project_test_time" description="test what do you want from me"/>
         </tsResponse>
     http_version:
   recorded_at: Wed, 02 Sep 2015 16:39:55 GMT
 - request:
     method: get
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects
     body:
       encoding: US-ASCII
       string: ''
@@ -113,7 +113,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |
         <?xml version="1.0" encoding="UTF-8"?>
-        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.0.xsd">
+        <tsResponse xmlns="http://tableausoftware.com/api" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api http://tableausoftware.com/api/ts-api-2.2.xsd">
           <pagination pageNumber="1" pageSize="100" totalAvailable="8"/>
           <projects>
             <project id="972bcf8c-d7ce-11e3-ac00-0fa50cfedda9" name="default" description="The default project that was automatically created by Tableau."/>
@@ -127,7 +127,7 @@ http_interactions:
   recorded_at: Wed, 02 Sep 2015 16:39:58 GMT
 - request:
     method: delete
-    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects/8d4c5f24-40cb-4565-a866-601eeed86370
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.2/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/projects/8d4c5f24-40cb-4565-a866-601eeed86370
     body:
       encoding: US-ASCII
       string: ''
