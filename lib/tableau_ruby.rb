@@ -3,8 +3,9 @@ $:.unshift File.dirname(__FILE__)
 require 'nokogiri'
 require 'faraday'
 
-require 'tableau_ruby/util/configuration'
-require 'tableau_ruby/util/permissions'
+Dir[File.dirname(__FILE__) + '/tableau_ruby/util/*.rb'].each do |file|
+  require file
+end
 
 Dir[File.dirname(__FILE__) + '/tableau_ruby/*.rb'].each do |file|
   require file
