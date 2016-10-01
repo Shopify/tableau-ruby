@@ -74,11 +74,17 @@ module Tableau
     end
 
     def find_by(params={})
-      params.update({page_size: 1000})
+      page = 1
+      params.update({page_size: 1000, page_number: page})
 
-      #BUG: if you have more than 1000 users, you wont find your users
-      #needs pagination support
       all_users = all(params)[:users]
+      num_returned = all_users.size
+      while num_returned > 0
+        page += 1
+        new_records = all(params.update(page_number: page))[:users]
+        all_users.concat(new_records)
+        num_returned = new_records.size
+      end
 
       if params[:id]
         return all_users.select {|u| u[:id] == params[:id] }.first
