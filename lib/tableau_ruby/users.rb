@@ -57,8 +57,10 @@ module Tableau
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
-      data = {users: []}
-      Nokogiri::XML(resp.body).css("tsResponse users user").each do |u|
+      data = {users: [], pagination: {}}
+
+      doc = Nokogiri::XML(resp.body)
+      doc.css("tsResponse users user").each do |u|
         data[:users] << {
           id: u['id'],
           name: u['name'],
@@ -70,6 +72,12 @@ module Tableau
           external_auth_user_id: u['externalAuthUserId']
         }
       end
+
+      doc.css("pagination").each do |p|
+        data[:pagination][:page_number] = p['pageNumber']
+        data[:pagination][:page_size] = p['pageSize']
+        data[:pagination][:total_available] = p['totalAvailable']
+      end
       data
     end
 
@@ -77,19 +85,18 @@ module Tableau
       page = 1
       params.update({page_size: 1000, page_number: page})
 
-      all_users = all(params)[:users]
-      num_returned = all_users.size
-      while num_returned > 0
+      response = all(params)
+      records = response[:users]
+      while records.size < response[:pagination][:total_available].to_i
         page += 1
-        new_records = all(params.update(page_number: page))[:users]
-        all_users.concat(new_records)
-        num_returned = new_records.size
+        response = all(params.update(page_number: page))
+        records.concat(response[:users])
       end
 
       if params[:id]
-        return all_users.select {|u| u[:id] == params[:id] }.first
+        return records.select {|u| u[:id] == params[:id] }.first
       elsif params[:name]
-        return all_users.select {|u| u[:name] == params[:name] }.first
+        return records.select {|u| u[:name] == params[:name] }.first
       else
         raise "You need :id or :name"
       end
