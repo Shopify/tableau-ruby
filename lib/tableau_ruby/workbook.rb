@@ -237,8 +237,8 @@ BODY
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
-      Nokogiri::XML(resp.body).css("view").each do |v|
-        (@views ||= []) << {id: v['id'], name: v['name']}
+      Nokogiri::XML(resp.body).css("view").each do |view|
+        (@views ||= []) << {id: view['id'], name: view['name'], contentUrl: view[:contentUrl]}
       end
 
       @views
