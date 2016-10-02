@@ -101,7 +101,7 @@ BODY
       end
 
       doc.css("workbook").each do |w|
-        workbook = {id: w["id"], name: w["name"]}
+        workbook = {id: w["id"], name: w["name"], updated_at: w["updatedAt"]}
 
         if options[:include_images]
           resp = @client.conn.get("/api/2.0/sites/#{@client.site_id}/workbooks/#{w['id']}/previewImage") do |req|
@@ -240,7 +240,7 @@ BODY
       end
 
       Nokogiri::XML(resp.body).css("view").each do |view|
-        views << {id: view['id'], name: view['name'], contentUrl: view[:contentUrl]}
+        views << {id: view['id'], name: view['name'], content_url: view[:contentUrl]}
       end
 
       views
