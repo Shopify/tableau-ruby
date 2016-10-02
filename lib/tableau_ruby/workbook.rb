@@ -233,15 +233,17 @@ BODY
     private
 
     def include_views(params)
+      views = []
+      
       resp = @client.conn.get("/api/2.0/sites/#{params[:site_id]}/workbooks/#{params[:id]}/views") do |req|
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
       Nokogiri::XML(resp.body).css("view").each do |view|
-        (@views ||= []) << {id: view['id'], name: view['name'], contentUrl: view[:contentUrl]}
+        views << {id: view['id'], name: view['name'], contentUrl: view[:contentUrl]}
       end
 
-      @views
+      views
     end
 
   end
