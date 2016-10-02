@@ -16,6 +16,14 @@ class TestWorkbook < TableauTest
       assert workbook[:id]
     end
   end
+  
+  def test_workbook_generic_get
+    VCR.use_cassette("tableau_workbook_list", :erb => true) do
+      workbooks = @client.workbooks.get(user_id: @admin_user[:id], page_size: 1000, page_number: 1)
+      assert workbooks[:workbooks].count > 0
+      assert workbooks.keys() == [:workbooks, :pagination]
+    end
+  end
 
   def test_workbook_include_views
     VCR.use_cassette("tableau_workbook_views", :erb => true) do
