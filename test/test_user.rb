@@ -24,6 +24,14 @@ class TestUsers < TableauTest
       assert all_users[:users].size() > 0
     end
   end
+  
+  def test_user_generic_get
+    VCR.use_cassette("tableau_user_list", :erb => true) do
+      all_users = @client.users.get(page_size: 10, page_number: 2)
+      assert all_users[:users].is_a? Array
+      assert all_users[:users].size() > 0
+    end
+  end
 
   def test_user_find_by_id
     VCR.use_cassette("tableau_user_find", :erb => true) do

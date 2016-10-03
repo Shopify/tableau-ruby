@@ -1,5 +1,6 @@
 module Tableau
   class Users
+    include Util::Pagination
 
     attr_reader :workbooks
 
@@ -47,7 +48,7 @@ module Tableau
       return resp.status
     end
 
-    def all(options={})
+    def get(options={})
       site_id = @client.site_id
 
       params = {pageSize: options[:page_size] || ''}
@@ -57,8 +58,10 @@ module Tableau
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
 
-      data = {users: []}
-      Nokogiri::XML(resp.body).css("tsResponse users user").each do |u|
+      data = {users: [], pagination: {}}
+
+      doc = Nokogiri::XML(resp.body)
+      doc.css("tsResponse users user").each do |u|
         data[:users] << {
           id: u['id'],
           name: u['name'],
@@ -70,20 +73,25 @@ module Tableau
           external_auth_user_id: u['externalAuthUserId']
         }
       end
+
+      doc.css("pagination").each do |p|
+        data[:pagination][:page_number] = p['pageNumber']
+        data[:pagination][:page_size] = p['pageSize']
+        data[:pagination][:total_available] = p['totalAvailable']
+      end
       data
+    end
+    
+    def all(options={})
+      paginate_over_all_records(:users, options)
     end
 
     def find_by(params={})
-      params.update({page_size: 1000})
-
-      #BUG: if you have more than 1000 users, you wont find your users
-      #needs pagination support
-      all_users = all(params)[:users]
-
+      records = all()[:users]
       if params[:id]
-        return all_users.select {|u| u[:id] == params[:id] }.first
+        return records.select {|u| u[:id] == params[:id] }.first
       elsif params[:name]
-        return all_users.select {|u| u[:name] == params[:name] }.first
+        return records.select {|u| u[:name] == params[:name] }.first
       else
         raise "You need :id or :name"
       end
