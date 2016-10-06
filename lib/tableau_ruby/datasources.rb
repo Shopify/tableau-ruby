@@ -29,9 +29,11 @@ module Tableau
         filedata = File.read(params[:file_path])
       end
 
+      name = params[:name] || filename.gsub(".tds","").gsub(" ", "")
+
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.tsRequest do
-          xml.datasource(name: filename.gsub(".tds","").gsub(" ", "")) do
+          xml.datasource(name: name) do
             xml.connectionCredentials(name: db_user, password: db_pass, embed: true)
             xml.project(id: params[:project_id])
           end
