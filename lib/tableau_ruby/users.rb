@@ -10,6 +10,7 @@ module Tableau
 
     def create(options)
       site_id = options[:site_id] || @client.site_id
+      site_role = options[:siteRole] || "Interactor"
 
       return { error: "name is missing." } unless options[:name]
 
@@ -17,7 +18,7 @@ module Tableau
         xml.tsRequest do
           xml.user(
             name: options[:name],
-            siteRole: "Interactor"
+            siteRole: site_role
           )
         end
       end
