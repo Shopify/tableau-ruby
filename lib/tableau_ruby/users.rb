@@ -39,17 +39,17 @@ module Tableau
       site_id = options[:site_id] || @client.site_id
 
       return { error: "user id is missing." } unless options[:user_id]
+      user_id = options[:user_id]
+
+      options.delete(:user_id)
 
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.tsRequest do
-          xml.user(
-            fullName: options[:fullName],
-            email: options[:email]
-          )
+          xml.user(options)
         end
       end
   
-      resp = @client.conn.put "/api/2.0/sites/#{site_id}/users/#{options[:user_id]}" do |req|
+      resp = @client.conn.put "/api/2.0/sites/#{site_id}/users/#{user_id}" do |req|
         req.body = builder.to_xml
         req.headers['X-Tableau-Auth'] = @client.token if @client.token
       end
