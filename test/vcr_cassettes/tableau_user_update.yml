@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: <%=ENV['TABLEAU_URL']%>/api/2.0/sites/<%=ENV['TABLEAU_DEFAULT_SITE']%>/users/1e0f9403-96c7-41ee-b2ab-e464c82e9451
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0"?>
+        <tsRequest>
+          <user fullName="Yolo Swag" email="yolo.swag@shopify.com"/>
+        </tsRequest>
+    headers:
+      Content-Type:
+      - application/xml
+      User-Agent:
+      - Faraday v0.13.1
+      X-Tableau-Auth:
+      - b76cf89c9c1e4616fc388d95601f3793
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - nginx
+      date:
+      - Tue, 03 Oct 2017 17:34:55 GMT
+      content-type:
+      - application/xml;charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      vary:
+      - Accept-Encoding
+      p3p:
+      - CP="NON"
+      x-ua-compatible:
+      - IE=Edge
+      x-content-type-options:
+      - nosniff
+      x-xss-protection:
+      - 1; mode=block
+      x-upstream:
+      - 10.0.1.39:80
+    body:
+      encoding: ASCII-8BIT
+      string: <?xml version='1.0' encoding='UTF-8'?><tsResponse xmlns="http://tableausoftware.com/api"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://tableausoftware.com/api
+        http://tableausoftware.com/api/ts-api-2.0.3.xsd"><user name="yolo.swag" fullName="Yolo
+        Swag" email="yolo.swag@shopify.com" siteRole="Interactor" /></tsResponse>
+    http_version: 
+  recorded_at: Tue, 03 Oct 2017 17:34:55 GMT
+recorded_with: VCR 2.9.3
