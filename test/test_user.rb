@@ -54,6 +54,13 @@ class TestUsers < TableauTest
       assert_equal "93796309-005f-480b-9b30-fbfb717b35bd", user_id
     end
   end
+
+  def test_user_update
+    VCR.use_cassette("tableau_user_update", :erb => true) do
+      status = @client.users.update({user_id: "1e0f9403-96c7-41ee-b2ab-e464c82e9451", fullName: "Yolo Swag", email: "yolo.swag@shopify.com"})
+      assert_equal 200, status
+    end
+  end
   
   def test_user_delete
     VCR.use_cassette("tableau_user_delete", :erb => true) do

@@ -10,6 +10,7 @@ module Tableau
 
     def create(options)
       site_id = options[:site_id] || @client.site_id
+      site_role = options[:siteRole] || "Interactor"
 
       return { error: "name is missing." } unless options[:name]
 
@@ -17,7 +18,7 @@ module Tableau
         xml.tsRequest do
           xml.user(
             name: options[:name],
-            siteRole: "Interactor"
+            siteRole: site_role
           )
         end
       end
@@ -32,6 +33,28 @@ module Tableau
       Nokogiri::XML(resp.body).css("tsResponse user").each do |s|
         return s["id"]
       end
+    end
+
+    def update(options)
+      site_id = options[:site_id] || @client.site_id
+
+      return { error: "user id is missing." } unless options[:user_id]
+      user_id = options[:user_id]
+
+      options.delete(:user_id)
+
+      builder = Nokogiri::XML::Builder.new do |xml|
+        xml.tsRequest do
+          xml.user(options)
+        end
+      end
+  
+      resp = @client.conn.put "/api/2.0/sites/#{site_id}/users/#{user_id}" do |req|
+        req.body = builder.to_xml
+        req.headers['X-Tableau-Auth'] = @client.token if @client.token
+      end
+
+      return resp.status
     end
 
     def delete(options)
@@ -81,7 +104,7 @@ module Tableau
       end
       data
     end
-    
+
     def all(options={})
       paginate_over_all_records(:users, options)
     end
