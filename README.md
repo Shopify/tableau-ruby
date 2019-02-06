@@ -56,7 +56,7 @@ end
 ### Sites
 ``` ruby
 
-# By default the all request does not include projects in the results
+# By default the request does not include projects in the results
 # add them by including include_projects: true
 @sites = client.sites.all(include_projects: true)
 
